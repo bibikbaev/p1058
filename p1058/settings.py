@@ -26,7 +26,7 @@ SECRET_KEY = '42j%(i0*l0pog5w=3-0d3udyb9(=dralkwqxji$0^kf^*wt+56'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['www.fnsexpertise.ru', 'fnsexpertise.ru']
 
 
 # Application definition
@@ -76,13 +76,22 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'p1058.wsgi.application'
 
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'u1902396_default',
+        'USER': 'u1902396_default',
+        'PASSWORD': '5gdiUr07Yd8pn6TQ',
+        'HOST': 'localhost',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 # DATABASES = {
 #     'default': {
