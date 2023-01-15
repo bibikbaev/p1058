@@ -1,0 +1,124 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/navbars/">
+    <!-- Bootstrap core CSS -->
+	<link href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+     .navbar {
+	  margin-bottom: 20px;
+	  background-color: #f5f5f5;
+	}
+    .btn-primary {
+    	  margin-right: 20px;
+    }
+
+    .navbar-brand {
+         margin-left: 10px;
+    }
+   a.lnk {
+    text-decoration: none;
+    color: #000000;
+   }
+   a.lnk:hover {
+   color: #4e5754;
+   }
+   a.lnk_r {
+       text-decoration: none;
+       color: #ffffff;
+   }
+
+   a.lnk_r:hover {
+   color: #ffffff;
+   }
+
+   a#lnk1:hover {
+   color: #4e5754;
+   }
+
+   a#lnk2:hover {
+   color: #4e5754;
+   }
+
+   a#lnk3:hover {
+   color: #4e5754;
+   }
+
+   a#lnk4:hover {
+   color: #4e5754;
+   }
+
+   a#lnk5:hover {
+   color: #4e5754;
+   }
+
+   a#dropdown1:hover {
+   color: #4e5754;
+   }
+
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 0px;">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <a class="navbar-brand" href="{% url 'home' %}">
+      <img src="{% static 'login_user/img/data.png' %}" alt="" width="44" height="44" class="d-inline-block align-text-top" style="margin: 0px;">
+      </a>
+      <ul class="navbar-nav">
+
+
+        <li class="nav-item">
+          <a class="nav-link active" id="lnk1" aria-current="page" href="{% url 'home' %}">Главная</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" id="lnk2" aria-current="page" href="{% url 'submit_application' %}">Подать заявку</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" id="lnk3" aria-current="page" href="{% url 'expertise' %}">Экспертизы</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link active" id="lnk4" aria-current="page" href="{% url 'messages' %}">История</a>
+        </li>
+
+      </ul>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+        <div class="navbar-nav align-items-end">
+          {% if request.user.is_authenticated %}
+         <div class="btn-group">
+          <a class="btn dropdown-toggle" id="dropdown1" data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+              {% if user.is_staff %}
+                {{user.get_full_name}}
+              {% else %}
+                {{user.title}}
+              {% endif %}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="{% url 'profile' %}">Профиль</a></li>
+            <li><a class="dropdown-item" href="{% url 'change_password' %}">Изменить пароль</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="{% url 'logout' %}">Выход</a></li>
+          </ul>
+        </div>
+          {% else %}
+          <button type="button" class="btn btn-light text-dark me-2"><a href="{% url 'login' %}" class="lnk">Войти</a></button>
+          <button type="button" class="btn btn-primary"><a href="{% url 'register' %}" class="lnk_r">Регистрация</a></button>
+          {% endif %}
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</nav>
+</body>
+</html>

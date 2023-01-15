@@ -1,0 +1,146 @@
+{% extends 'login_user/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    	<link href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+        <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+
+
+        </style>
+</head>
+
+
+<body>
+
+{% block content %}
+
+<main>
+  <div class="container-fluid">
+<div class="row">
+  <div class="col-10 col-lg-8">
+  <div class="col-12 offset-1">
+
+
+
+<form action="" method="post">
+        {% csrf_token %}
+
+        <p class="fs-4">Персональные данные</p>
+        {% if user.is_staff %}
+            <div class="row mb-3">
+                <label for="address" class="col-4 col-lg-3 col-form-label">Логин для входа</label>
+                   <div class="col-8 col-lg-9">
+                       {{ form.inn }}
+                   </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="address" class="col-4 col-lg-3 col-form-label">Фамилия</label>
+                   <div class="col-8 col-lg-9">
+                       {{ form.last_name }}
+                   </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="address" class="col-4 col-lg-3 col-form-label">Имя</label>
+                   <div class="col-8 col-lg-9">
+                       {{ form.first_name }}
+                   </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="address" class="col-4 col-lg-3 col-form-label">Отчество</label>
+                   <div class="col-8 col-lg-9">
+                       {{ form.middle_name }}
+                   </div>
+            </div>
+        {% else %}
+            <div class="row mb-3">
+                <label for="address" class="col-4 col-lg-3 col-form-label">Название компании</label>
+                   <div class="col-8 col-lg-9">
+                       {{ form.title }}
+                   </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="address" class="col-4 col-lg-3 col-form-label">ИНН</label>
+                   <div class="col-8 col-lg-9">
+                       {{ form.inn }}
+                   </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="address" class="col-4 col-lg-3 col-form-label">КПП</label>
+                   <div class="col-8 col-lg-9">
+                       {{ form.kpp }}
+                   </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="address" class="col-4 col-lg-3 col-form-label">ФИО руководителя</label>
+                   <div class="col-8 col-lg-9">
+                       {{ form.head_full_name }}
+                   </div>
+            </div>
+
+            <div class="row mb-3">
+                <label for="address" class="col-4 col-lg-3 col-form-label">ФИО главного бухгалтера</label>
+                   <div class="col-8 col-lg-9">
+                       {{ form.chief_accountant_full_name }}
+                   </div>
+            </div>
+        {% endif %}
+
+
+        <p class="fs-4">Контактная информация<p>
+
+        <div class="row mb-3">
+            <label for="address" class="col-4 col-lg-3 col-form-label">Адрес электронной почты</label>
+               <div class="col-8 col-lg-9">
+                   {{ form.email }}
+               </div>
+            </div>
+
+
+        <div class="row mb-3">
+            <label for="address" class="col-4 col-lg-3 col-form-label">Телефон</label>
+               <div class="col-8 col-lg-9">
+                   {{ form.phone }}
+               </div>
+            </div>
+
+
+        <div class="col-4 col-lg-3">
+
+        <button class="w-100 btn btn-primary"type="submit" id="btnSubmit">Сохранить</button>
+        </div>
+</form>
+
+  </div>
+  </div>
+</div>
+  </div>
+</main>
+
+{% endblock content %}
+
+</body>
+</html>

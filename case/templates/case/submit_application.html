@@ -1,0 +1,205 @@
+{% extends 'login_user/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <!-- Bootstrap core CSS -->
+	<link href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+    .form-check {
+    display: block;
+    min-height: 1.5rem;
+    padding-left: 1.5em;
+    margin-bottom: 0.125rem;
+}
+
+    </style>
+  </head>
+
+<body class="bg-light">
+{% block content %}
+<main>
+
+<div class="container-fluid" id="containerTextLeft">
+    <div class="row">
+
+  <div class="col-10 col-lg-12">
+  <div class="col-12">
+
+     <div class="py-2 text-center">
+      <p class="fs-4">Заявка на предварительную оценку определения правомерности применения налоговой льготы</p>
+    </div>
+
+      <div class="row">
+
+
+      <div class="col-12 offset-1 col-lg-3 offset-lg-0 order-lg-last">
+
+       <div class="row">
+
+       <div class="row mb-3">
+         <label class="col-sm-12 col-form-label">
+             <span class="text-primary">
+                 <h5>
+                     Информация
+                 </h5>
+             </span>
+             <p class="lead">Заполните информацию о работе и прикрепите документы в формате <b>pdf или docx</b>, чтобы подать заявление на предварительную оценку определения правомерности применения налоговой льготы для НИОКР.</p>
+         </label>
+
+            </div>
+      </div>
+      </div>
+
+
+
+        <div class="col-12 col-lg-8" id="formInput">
+        <div class="col-lg-11 offset-1">
+        <form enctype="multipart/form-data" method="post">
+          {% csrf_token %}
+          <div class="row">
+              {% if user.is_staff %}
+
+           <div class="row mb-3">
+            <label for="address" class="col-4 col-form-label">Налогоплательщик</label>
+               <div class="col-8">
+                   {{ form.payer }}
+               </div>
+            </div>
+
+              {% endif %}
+
+           <div class="row mb-3">
+            <label for="address" class="col-4 col-form-label">Название работы</label>
+               <div class="col-8">
+                   {{ form.title }}
+               </div>
+            </div>
+
+            <div class="row mb-3">
+            <label for="inputStart" class="col-4 col-form-label">Дата начало выполнения</label>
+               <div class="col-8">
+                   {{ form.start_job }}
+               </div>
+            </div>
+
+            <div class="row mb-3">
+            <label for="inputEnd" class="col-4 col-form-label">Дата завершения выполнения</label>
+               <div class="col-8">
+                   {{ form.end_job }}
+               </div>
+            </div>
+
+          <div class="row mb-3">
+            <label for="inputTheme" class="col-4 col-form-label">Тема работы</label>
+              <div class="col-8">
+                    {{ form.theme }}
+              </div>
+            </div>
+
+          <div class="row mb-3">
+            <label for="inputTheme" class="col-4 col-form-label">Тип работы</label>
+              <div class="col-8">
+                    {{ form.type }}
+              </div>
+            </div>
+
+          <div class="row mb-3">
+            <label for="formFile" class="col-4 col-form-label">Декларация</label>
+            <div class="col-8">
+                {{ form.declaration }}
+             </div>
+            </div>
+
+          <div class="row mb-3">
+            <label for="formFile" class="col-4 col-form-label">Отчёт по работе</label>
+            <div class="col-8">
+                {{ form.report }}
+             </div>
+            </div>
+
+
+           <div class="row mb-3">
+            <label for="formFile" class="col-4 col-form-label">ТЗ по работе</label>
+            <div class="col-8">
+                {{ form.specification }}
+             </div>
+            </div>
+
+           <div class="row mb-3">
+              <div class="col-8 offset-4">
+                  <div class="form-check">
+                    {{ form.sp_checkbox }}
+              <label class="form-check-label" for="gridCheck">
+                    ТЗ отсутствует
+              </label>
+                  </div>
+              </div>
+           </div>
+
+
+
+         <div class="row mb-3">
+
+         {% if form.non_field_errors %}
+         {% for error in form.non_field_errors %}
+         <div class="alert alert-danger">
+         <strong>{{ error|escape }}</strong>
+         </div>
+         {% endfor %}
+         {% endif %}
+
+         {% if form.errors %}
+         {% for field in form %}
+         {% for error in field.errors %}
+         <div class="alert alert-danger">
+         <strong>{{ error|escape }}</strong>
+         </div>
+         {% endfor %}
+         {% endfor %}
+         {% endif %}
+        <div class="col-4">
+        <button class="Button_button__2Lf63 Button_button__medium__2mCsW Button_button__orange__3eFfI Button_button__100__2sNOJ" type="submit">Отправить</button>
+        </div>
+
+            </div>
+
+          </div>
+
+
+
+</form>
+            </div>
+            </div>
+        </div>
+  </div>
+  </div>
+    </div>
+</div>
+</main>
+</body>
+
+</div>
+<script src="/docs/5.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="form-validation.js"></script>
+{% endblock %}
+
+</body>
+
+</html>

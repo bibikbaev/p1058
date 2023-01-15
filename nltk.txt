@@ -1,0 +1,11 @@
+stopwords
+punkt
+averaged_perceptron_tagger
+vader_lexicon
+wordnet
+pros_cons
+universal_tagset
+averaged_perceptron_tagger_ru
+snowball_data
+
+

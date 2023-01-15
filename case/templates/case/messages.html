@@ -1,0 +1,114 @@
+{% extends 'login_user/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    	<link href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+        <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+        </style>
+</head>
+
+
+<body>
+
+{% block content %}
+
+<main>
+  <div class="container-fluid">
+<div class="row">
+  <div class="col-10 col-lg-8">
+  <div class="col-12 offset-1">
+
+{% if not messages %}
+
+      <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+        <h3>Истории пока нет</h3>
+      </div>
+
+{% else %}
+
+<article class="my-2" id="tables">
+      <div class="row">
+
+      <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+        <p class="fs-4">История обработки экспертизы налоговым органом</p>
+      </div>
+
+
+
+      </div>
+
+
+      {% regroup messages by case as case_list %}
+      {% for case in case_list %}
+
+      <div class="row mb-2">
+            <div class="col-4 col-lg-3">
+      <p class="fs-5">Экспертиза: {{ case.grouper }}</p>
+            </div>
+            <div class="col-4 col-lg-2">
+      <a href="{% url 'expertise_detail' case.grouper.number %}" class="w-100 btn btn-outline-primary">Перейти</a>
+           </div>
+
+      </div>
+
+      <div clas="row">
+        <div class="bd-example">
+        <table class="table table-responsive table-borderless">
+
+          <thead>
+
+          <tr class="bg-light">
+              <th scope="col" style="width:40%"><label class="fw-normal">Дата и время получения</label></th>
+            <th scope="col" style="width:60%"><label class="fw-normal">Статус</label></th>
+          </tr>
+          </thead>
+          <tbody>
+
+          {% for m in case.list %}
+          <tr>
+            <td>{{ m.added }}</td>
+            <td>{{ m.text }}</td>
+          </tr>
+          {% endfor %}
+
+          </tbody>
+        </table>
+        </div>
+      </div>
+          {% endfor %}
+
+
+</article>
+</div>
+</div>
+
+{% endif %}
+
+</div>
+  </div>
+</main>
+
+{% endblock %}
+
+</body>
+
+
+</html>

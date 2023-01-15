@@ -1,0 +1,214 @@
+{% extends 'login_user/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    	<link href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+        <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+        </style>
+</head>
+
+
+<body>
+
+{% block content %}
+
+<main>
+
+<div class="row mb-3">
+  <div class="col-sm-10">
+  <div class="col-sm-12 offset-1">
+                <div class="row">
+
+      <div class="bd-heading col">
+        <p class="fs-4">Анализ и итоги</p>
+      </div>
+
+      <div class="col-3 order-last" style="margin-bottom: 10px;">
+      <a href="{{ checklist.get_absolute_url_main }}" class="w-100 btn btn-outline-primary ">Вернуться к чек-листу</a>
+      </div>
+
+                </div>
+      <div class="card mb-3">
+      <div class="card-body">
+
+          <p class="fs-4">Гистограмма, отражающая количество наиболее часто встречающихся слов из словаря
+          </p>
+          if
+               <img src="{{checklist.report_diagram.url}}" width="1200" height="500">
+<!--               <img src="{% static 'login_user/img/diagramm.png' %}" width="1200" height="500">-->
+      </div>
+      </div>
+
+
+
+
+          <div class="card mb-3">
+      <div class="card-body">
+
+          <p class="fs-4">Соответствие заявленному разделу</p>
+          <p>
+              Заявлена тема <b> {{checklist.case.theme}} </b> из раздела <b>{{checklist.case.theme.section}}</b>, по результатам проведённого анализа данная работа относится к разделу <b>Технологии доступа к широкополосным мультимедийным услугам.</b></p>
+      </div>
+      </div>
+
+
+
+
+
+<form action="" method="post">
+        {% csrf_token %}
+
+     <div class="card mb-3">
+      <div class="card-body">
+
+          <p class="fs-4">Результаты автоматического исследования структуры
+          </p>
+
+
+           <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.has_content.label }}
+              </label>
+                    {{ form.has_content }}
+                  </div>
+              </div>
+           </div>
+
+            <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.has_introduction.label }}
+              </label>
+                    {{ form.has_introduction }}
+                  </div>
+              </div>
+           </div>
+
+                        <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.has_main_part.label }}
+              </label>
+                    {{ form.has_main_part }}
+                  </div>
+              </div>
+           </div>
+
+                      <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.has_conclusion.label }}
+              </label>
+                    {{ form.has_conclusion }}
+                  </div>
+              </div>
+           </div>
+
+                      <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.has_performers.label }}
+              </label>
+                    {{ form.has_performers }}
+                  </div>
+              </div>
+           </div>
+
+                                <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.has_sources.label }}
+              </label>
+                    {{ form.has_sources }}
+                  </div>
+              </div>
+           </div>
+
+          <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.has_application.label }}
+              </label>
+                    {{ form.has_application }}
+                  </div>
+              </div>
+           </div>
+
+
+      </div>
+     </div>
+
+         <div class="card mb-3">
+      <div class="card-body">
+
+          <p class="fs-4">Итоги экспертизы
+          </p>
+            <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.adopted.label }}
+              </label>
+                    {{ form.adopted }}
+                  </div>
+              </div>
+           </div>
+             <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck" style="margin-bottom: 10px;">
+                    {{ form.comment.label }}
+              </label>
+                    {{ form.comment }}
+                  </div>
+              </div>
+           </div>
+      </div>
+         </div>
+
+        {% if user.is_staff %}
+
+        <div class="col-4 col-lg-3">
+        <button class="w-100 btn btn-primary"type="submit" id="btnSubmit">Сохранить</button>
+        </div>
+        {% endif %}
+
+</form>
+  </div>
+  </div>
+    </div>
+
+
+  </div>
+</main>
+
+{% endblock content %}
+
+</body>
+</html>

@@ -1,0 +1,439 @@
+{% extends 'login_user/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    	<link href="https://getbootstrap.com/docs/5.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+        <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+        </style>
+</head>
+
+
+<body>
+
+{% block content %}
+
+<main>
+
+
+<div class="row mb-3">
+
+  <div class="col-10 col-lg-8">
+  <div class="col-12 offset-1">
+          <div class="row">
+
+      <div class="bd-heading col">
+        <p class="fs-4">Чек-лист</p>
+      </div>
+
+
+            <div class="col-4 order-last">
+      <a href="{{ checklist.get_absolute_url }}" class="w-100 btn btn-outline-primary">Перейти к анализу и итогам</a>
+           </div>
+
+      </div>
+      <form action="" method="post">
+        {% csrf_token %}
+
+     <div class="card mb-3">
+      <div class="card-body">
+          <p class="fs-4">Общая информация
+          </p>
+
+            <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.is_gost.label }}
+              </label>
+                    {{ form.is_gost }}
+                  </div>
+              </div>
+           </div>
+
+
+                    <p class="fs-4">Исследование структуры
+          </p>
+
+            <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.user_has_content.label }}
+              </label>
+                    {{ form.user_has_content }}
+                  </div>
+              </div>
+           </div>
+
+                      <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.user_has_introduction.label }}
+              </label>
+                    {{ form.user_has_introduction }}
+                  </div>
+              </div>
+           </div>
+
+                      <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.user_has_main_part.label }}
+              </label>
+                    {{ form.user_has_main_part }}
+                  </div>
+              </div>
+           </div>
+
+                                <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.user_has_conclusion.label }}
+              </label>
+                    {{ form.user_has_conclusion }}
+                  </div>
+              </div>
+           </div>
+
+                                          <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.user_has_performers.label }}
+              </label>
+                    {{ form.user_has_performers }}
+                  </div>
+              </div>
+           </div>
+
+                                                    <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.user_has_sources.label }}
+              </label>
+                    {{ form.user_has_sources }}
+                  </div>
+              </div>
+           </div>
+
+                                                    <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.user_has_application.label }}
+              </label>
+                    {{ form.user_has_application }}
+                  </div>
+              </div>
+           </div>
+          <div class="row mb-3">
+              <label class="col-4 col-form-label" for="gridCheck">
+                    {{ form.udk_index.label }}
+              </label>
+                      <div class="col-6">
+                    {{ form.udk_index }}
+                      </div>
+           </div>
+
+              <div class="row mb-3">
+              <label class="col-4 col-form-label" for="gridCheck">
+                    {{ form.numbers_report_ident.label }}
+              </label>
+                <div class="col-6">
+                    {{ form.numbers_report_ident }}
+                </div>
+           </div>
+
+           <div class="row mb-3">
+              <label class="col-4 col-form-label" for="gridCheck">
+                    {{ form.report_type.label }}
+              </label>
+                <div class="col-6">
+                    {{ form.report_type }}
+                </div>
+           </div>
+
+           <div class="row mb-3">
+              <label class="col-4 col-form-label" for="gridCheck">
+                    {{ form.report_date.label }}
+              </label>
+                <div class="col-6">
+                    {{ form.report_date }}
+                </div>
+           </div>
+
+           <div class="row mb-3">
+              <label class="col-4 col-form-label" for="gridCheck">
+                    {{ form.report_place.label }}
+              </label>
+                <div class="col-6">
+                    {{ form.report_place }}
+                </div>
+           </div>
+
+
+                     <div class="row mb-3">
+              <label class="col-4 col-form-label" for="gridCheck">
+                    {{ form.nir_maker.label }}
+              </label>
+                <div class="col-6">
+                    {{ form.nir_maker }}
+                </div>
+           </div>
+
+                     <div class="row mb-3">
+              <label class="col-4 col-form-label" for="gridCheck">
+                    {{ form.maker_post.label }}
+              </label>
+                <div class="col-6">
+                    {{ form.maker_post }}
+                </div>
+           </div>
+
+
+                     <div class="row mb-3">
+              <label class="col-4 col-form-label" for="gridCheck">
+                    {{ form.maker_degree.label }}
+              </label>
+                <div class="col-6">
+                    {{ form.maker_degree }}
+                </div>
+           </div>
+
+
+                     <div class="row mb-3">
+              <label class="col-4 col-form-label" for="gridCheck">
+                    {{ form.maker_title.label }}
+              </label>
+                <div class="col-6">
+                    {{ form.maker_title }}
+                </div>
+           </div>
+
+                               <div class="row mb-3">
+              <label class="col-4 col-form-label" for="gridCheck">
+                    {{ form.page_count.label }}
+              </label>
+                <div class="col-6">
+                    {{ form.page_count }}
+                </div>
+           </div>
+
+
+                                         <div class="row mb-3">
+              <label class="col-4 col-form-label" for="gridCheck">
+                    {{ form.application_count.label }}
+              </label>
+                <div class="col-6">
+                    {{ form.application_count }}
+                </div>
+           </div>
+
+
+          <div class="row mb-3">
+              <label class="col-4 col-form-label" for="gridCheck">
+                    {{ form.source_count.label }}
+              </label>
+                <div class="col-6">
+                    {{ form.source_count }}
+                </div>
+           </div>
+
+                                                            <div class="row mb-3">
+              <label class="col-4 col-form-label" for="gridCheck">
+                    {{ form.key_words.label }}
+              </label>
+                <div class="col-6">
+                    {{ form.key_words }}
+                </div>
+           </div>
+
+<!--            <label class="col-form-label" for="gridCheck">-->
+<!--                    Отражает ли текст реферата следующие пункты?-->
+<!--              </label>-->
+          <p class="fs-4">Исследование содержания отчета о НИОКР
+          </p>
+            <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.is_first.label }}
+              </label>
+                    {{ form.is_first }}
+                  </div>
+              </div>
+           </div>
+
+            <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.is_unique.label }}
+              </label>
+                    {{ form.is_unique }}
+                  </div>
+              </div>
+           </div>
+
+                      <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.exp_desc.label }}
+              </label>
+                    {{ form.exp_desc }}
+                  </div>
+              </div>
+           </div>
+
+                      <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.contain_unique.label }}
+              </label>
+                    {{ form.contain_unique }}
+                  </div>
+              </div>
+           </div>
+
+                      <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.contain_experiment.label }}
+              </label>
+                    {{ form.contain_experiment }}
+                  </div>
+              </div>
+           </div>
+
+                      <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.efficient_nec.label }}
+              </label>
+                    {{ form.efficient_nec }}
+                  </div>
+              </div>
+           </div>
+
+                                <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.integration.label }}
+              </label>
+                    {{ form.integration }}
+                  </div>
+              </div>
+           </div>
+
+          <p class="fs-4">Исследование характера и содержания выполненных работ
+          </p>
+
+          <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.risk.label }}
+              </label>
+                    {{ form.risk }}
+                  </div>
+              </div>
+           </div>
+
+                    <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.used.label }}
+              </label>
+                    {{ form.used }}
+                  </div>
+              </div>
+           </div>
+
+                    <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.union.label }}
+              </label>
+                    {{ form.union }}
+                  </div>
+              </div>
+           </div>
+
+                    <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.modification.label }}
+              </label>
+                    {{ form.modification }}
+                  </div>
+              </div>
+           </div>
+
+                    <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.analog.label }}
+              </label>
+                    {{ form.analog }}
+                  </div>
+              </div>
+           </div>
+
+                    <div class="row mb-3">
+              <div class="col-8 col-lg-9">
+                  <div class="form-check">
+              <label class="form-check-label" for="gridCheck">
+                    {{ form.new_knowledge.label }}
+              </label>
+                    {{ form.new_knowledge }}
+                  </div>
+              </div>
+           </div>
+      </div>
+      </div>
+                 <div class="col-4 col-lg-3">
+        <button class="w-100 btn btn-primary"type="submit" id="btnSubmit">Сохранить</button>
+        </div>
+          </form>
+  </div>
+  </div>
+    </div>
+
+
+</main>
+
+{% endblock content %}
+
+</body>
+</html>
